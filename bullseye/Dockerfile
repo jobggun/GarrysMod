@@ -3,12 +3,10 @@
 ###########################################################
 FROM cm2network/steamcmd:root
 
-LABEL maintainer="walentinlamonos@gmail.com"
-
-ENV STEAMAPPID 232250
-ENV STEAMAPP tf
+ENV STEAMAPPID 4020
+ENV STEAMAPP garrysmod
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
-ENV DLURL https://raw.githubusercontent.com/CM2Walki/TF2
+ENV DLURL https://raw.githubusercontent.com/jobggun/GarrysMod
 
 RUN set -x \
 	# Add i386 architecture
@@ -16,13 +14,13 @@ RUN set -x \
 	# Install, update & upgrade packages
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		wget=1.21-1+deb11u1 \
-		ca-certificates=20210119 \
-		lib32z1=1:1.2.11.dfsg-2+deb11u1 \
-		libncurses5:i386=6.2+20201114-2 \
-		libbz2-1.0:i386=1.0.8-4 \
-		libtinfo5:i386=6.2+20201114-2 \
-		libcurl3-gnutls:i386=7.74.0-1.3+deb11u1 \
+		wget \
+		ca-certificates \
+		lib32z1 \
+		libncurses5:i386 \
+		libbz2-1.0:i386 \
+		libtinfo5:i386 \
+		libcurl3-gnutls:i386 \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	# Add entry script
 	&& wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
@@ -41,21 +39,20 @@ RUN set -x \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV SRCDS_FPSMAX=300 \
-	SRCDS_TICKRATE=66 \
+	SRCDS_TICKRATE=100 \
 	SRCDS_PORT=27015 \
 	SRCDS_TV_PORT=27020 \
-        SRCDS_NET_PUBLIC_ADDRESS="0" \
-        SRCDS_IP="0" \
+    SRCDS_IP="0" \
 	SRCDS_MAXPLAYERS=16 \
 	SRCDS_TOKEN=0 \
 	SRCDS_RCONPW="changeme" \
 	SRCDS_PW="changeme" \
-	SRCDS_STARTMAP="ctf_2fort" \
+	SRCDS_STARTMAP="gm_construct" \
 	SRCDS_REGION=3 \
-        SRCDS_HOSTNAME="New \"${STEAMAPP}\" Server" \
-        SRCDS_WORKSHOP_START_MAP=0 \
-        SRCDS_HOST_WORKSHOP_COLLECTION=0 \
-        SRCDS_WORKSHOP_AUTHKEY=""
+    SRCDS_HOSTNAME="New \"${STEAMAPP}\" Server" \
+    SRCDS_HOST_WORKSHOP_COLLECTION=0 \
+    SRCDS_WORKSHOP_AUTHKEY="" \
+	ADDITIONAL_ARGS=""
 
 # Switch to user
 USER ${USER}
