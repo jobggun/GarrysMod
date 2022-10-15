@@ -22,7 +22,7 @@ RUN set -x \
 
 ENV STEAMAPPID=4020
 ENV STEAMAPP=garrysmod
-ENV STEAMAPPBETA=
+ENV STEAMAPPBETA=x86_64
 ENV STEAMAPPDIR="${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV DLURL=https://raw.githubusercontent.com/jobggun/GarrysMod
 
