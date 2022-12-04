@@ -31,7 +31,7 @@ ENV DLURL=https://raw.githubusercontent.com/jobggun/GarrysMod
 RUN set -x \
     && mkdir -p "${STEAMAPPDIR}" \
     # Add entry script
-    && wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
+    && wget "${DLURL}/master/etc/entry_x86-64.sh" -O "${HOMEDIR}/entry.sh" \
     # Create autoupdate config
     && { \
         echo '@ShutdownOnFailedCommand 1'; \
@@ -72,18 +72,18 @@ EXPOSE 27015/tcp \
        27015/udp \
        27020/udp
 
-FROM build_stage AS bullseye_x86_64
+FROM build_stage AS bullseye_x86-64
 
 ENV STEAMAPPID=4020
 ENV STEAMAPP=garrysmod
-ENV STEAMAPPBETA=x86_64
+ENV STEAMAPPBETA=x86-64
 ENV STEAMAPPDIR="${HOMEDIR}/${STEAMAPP}-dedicated"
 ENV DLURL=https://raw.githubusercontent.com/jobggun/GarrysMod
 
 RUN set -x \
     && mkdir -p "${STEAMAPPDIR}" \
     # Add entry script
-    && wget "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
+    && wget "${DLURL}/master/etc/entry_x86-64.sh" -O "${HOMEDIR}/entry.sh" \
     # Create autoupdate config
     && { \
         echo '@ShutdownOnFailedCommand 1'; \
