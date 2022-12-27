@@ -10,13 +10,13 @@ RUN set -x \
     && apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends --no-install-suggests \
-        wget \
-        ca-certificates \
-        lib32z1 \
-        libncurses5:i386 \
-        libbz2-1.0:i386 \
-        libtinfo5:i386 \
-        libcurl3-gnutls:i386 \
+        wget=1.21-1+deb11u1 \
+        ca-certificates=20210119 \
+        lib32z1=1:1.2.11.dfsg-2+deb11u2 \
+        libncurses5:i386=6.2+20201114-2 \
+        libbz2-1.0:i386=1.0.8-4 \
+        libtinfo5:i386=6.2+20201114-2 \
+        libcurl3-gnutls:i386=7.74.0-1.3+deb11u3 \
     # Clean up
     && rm -rf /var/lib/apt/lists/*
 
@@ -31,7 +31,7 @@ ENV DLURL=https://raw.githubusercontent.com/jobggun/GarrysMod
 RUN set -x \
     && mkdir -p "${STEAMAPPDIR}" \
     # Add entry script
-    && wget "${DLURL}/master/etc/entry_x86-64.sh" -O "${HOMEDIR}/entry.sh" \
+    && wget "${DLURL}/master/etc/entry_x86.sh" -O "${HOMEDIR}/entry.sh" \
     # Create autoupdate config
     && { \
         echo '@ShutdownOnFailedCommand 1'; \
