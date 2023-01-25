@@ -9,7 +9,7 @@ bash "${STEAMCMDDIR}/steamcmd.sh" +force_install_dir "${STEAMAPPDIR}" \
 # Believe it or not, if you don't do this srcds_run shits itself
 cd "${STEAMAPPDIR}"
 
-bash "${STEAMAPPDIR}/srcds_run_x64" -game "${STEAMAPP}" -console -autoupdate \
+exec "${STEAMAPPDIR}/srcds_run_x64" -game "${STEAMAPP}" -console -autoupdate \
             -steam_dir "${STEAMCMDDIR}" \
             -steamcmd_script "${HOMEDIR}/${STEAMAPP}_update.txt" \
             -usercon \
