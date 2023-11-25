@@ -13,10 +13,10 @@ RUN set -x \
         wget=1.21-1+deb11u1 \
         ca-certificates=20210119 \
         lib32z1=1:1.2.11.dfsg-2+deb11u2 \
-        libncurses5:i386=6.2+20201114-2 \
+        libncurses5:i386=6.2+20201114-2+deb11u2 \
         libbz2-1.0:i386=1.0.8-4 \
-        libtinfo5:i386=6.2+20201114-2 \
-        libcurl3-gnutls:i386=7.74.0-1.3+deb11u3 \
+        libtinfo5:i386=6.2+20201114-2+deb11u2 \
+        libcurl3-gnutls:i386=7.74.0-1.3+deb11u10 \
     # Clean up
     && rm -rf /var/lib/apt/lists/*
 
